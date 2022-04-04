@@ -104,3 +104,60 @@ public class Solution {
         return root;
     }
 }
+
+//***********************************************************************************************
+
+//We can improve the searching rootIndex by using HashMap
+
+import java.util.*;
+public class Solution {
+
+	public static BinaryTreeNode<Integer> buildTree(int[] preOrder, int[] inOrder) {
+		//Your code goes here
+	
+	//we create HashMap of inorder
+        Map<Integer,Integer> inMap = new HashMap<>();
+        for( int i = 0; i<inOrder.length; i++){
+            inMap.put(inOrder[i], i);
+        }
+        
+        return helper(preOrder, inOrder, 0, preOrder.length-1, 0, inOrder.length -1, inMap);
+	}
+    
+    public static BinaryTreeNode<Integer> helper( int[] pre, int[] in, int preS, int preE, int inS, int inE, Map<Integer, Integer> inMap){
+        if( preS > preE) return null;
+        
+        int rootData = pre[preS];
+        BinaryTreeNode<Integer> root = new BinaryTreeNode<Integer>(rootData);
+        
+	// Here we use HashMap to find the rootIndex
+        int rootIndex = inMap.get(rootData);
+	
+        // for(int i = inS; i<= inE; i++){
+        //     if( rootData == in[i]){
+        //         rootIndex = i;
+        //         break;
+        //     }
+        // }
+         
+        
+        int LinS = inS;
+        int LinE = rootIndex -1;
+        int LpreS = preS + 1;
+        int leftInLength = LinE - LinS + 1;
+        int LpreE = LpreS + leftInLength -1;
+        
+        int RinS = rootIndex + 1;
+        int RinE = inE;
+        int RpreS = LpreE+1;
+        int RpreE = preE;
+        
+        BinaryTreeNode<Integer> left = helper(pre,in, LpreS, LpreE, LinS, LinE, inMap);
+        BinaryTreeNode<Integer> right = helper(pre,in, RpreS, RpreE, RinS, RinE, inMap);
+        
+        root.left = left;
+        root.right = right;
+        return root;
+    }
+
+}
