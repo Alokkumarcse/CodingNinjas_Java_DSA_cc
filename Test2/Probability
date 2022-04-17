@@ -1,0 +1,50 @@
+Probability
+
+An urn contains 8 balls : 4 red , 2 blue and 2 green. Now n balls are drawn out of the urn.
+Calculate the probability that out of n drawn balls exactly x balls are red.
+Find your answer multiplied by 100 and return the integer part.
+All required values for computation will be in integer range.
+x is always less than equal to 4 and x is always less than equal to n.
+Input format :
+Two spaced integers : n and x
+Output format :
+Integer part of (Probability * 100). 
+Sample Input 1 :
+3 1
+Sample Output 1:
+42
+
+//****************************************************************************************************************
+
+public class Solution {
+    
+    public static int probability(int n,int x){
+                
+        /* Your class should be named Solution
+        * Don't write main().
+        * Don't read input, it is passed as function argument.
+        * Return output and don't print it.
+        * Taking input and printing output is handled automatically.
+        */
+        
+        int  prob =(int) (((nCr(4,x) * nCr(4,n-x) * 1.0)/nCr(8,n)) * 100);
+
+        return prob;
+    }
+    
+    //Calculating nCr
+    private static int nCr(int n, int r){
+        return fact(n)/ (fact(r)* fact(n-r));
+    }
+    
+    //Calculating factorial
+    private static int fact(int n){
+        int ans =1;
+        for(int i = 1; i<= n; i++){
+            ans *= i;
+        }
+        return ans;
+    }
+    
+
+}
