@@ -24,3 +24,62 @@ Sample Output :
 
 //********************************************************************************************************************
 
+public class solution {
+
+	public static void print(int n) {
+	//Write your code here
+        
+        
+        // I am taking idea from spiral printing problem
+        
+        
+    int startRow = 0;
+    int endRow = 2*n -2;
+    int startCol = 0;
+    int endCol = 2*n -2;
+    
+    int matrix[][] = new int[2*n -1][2*n -1];
+    
+    while(n != 0 && startRow <= endRow  || startCol <= endCol){
+        
+        // store first row value 
+        for(int i = startRow; i<= endCol; i++){
+        	matrix[startRow][i] = n;
+        }
+        startRow++;
+        
+        // store last column value
+        for(int i = startRow; i<=endRow; i++ ){
+        	matrix[i][endCol] = n;
+        }
+        endCol--;
+        
+        // store last row value
+        for(int i = endCol;  i>= startCol; i--){
+        	matrix[endRow][i] = n;
+        }
+        endRow--;
+        
+        // store first column value
+        for(int i = endRow; i>= startRow; i--){
+        	matrix[i][startCol] = n;  
+        }
+        startCol++;
+        n--;
+       
+        //earlier matrix is in [M * N] form
+        // now new matrix is form [M-1 * N -1] each time
+   }  
+        // print generated matrix 
+        for(int i = 0; i<matrix.length; i++) {
+			for(int j =0; j<matrix[0].length; j++) {
+				System.out.print(matrix[i][j]);
+			}
+			System.out.println();
+		}
+   }
+	
+}
+
+//tc = o(n^2)
+//sc = O(n^2) bcz i am creating [n*n] matrix to store the value of pattern
