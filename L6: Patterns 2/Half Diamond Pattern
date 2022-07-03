@@ -37,73 +37,77 @@ Sample Output 2 :
 
 //********************************************************************************
 
-#include<iostream>
-using namespace std;
-
-int main() {
-	// Write your code here
-    int n;
-    cin >> n;
+import java.util.Scanner;
+public class Solution {
     
-    if(n==0)
-    {
-        cout<<"*"<<endl<<"*";
-        return 0;
+    public static void main(String[] args) {
+        // Write your code here
+        
+		Scanner scan = new Scanner(System.in);
+		int n = scan.nextInt();
+        
+        if(n == 0){
+            System.out.println("*");
+            System.out.println("*");
+            return;
+        };
+		
+		
+		// first part 
+	    for(int i =1; i<=n+1; i++)
+	    {
+	       System.out.print("*"); // * at first position
+	        
+	        //all number series in increasing and decreasing order.
+	        int  inc = 1, dec= i-2;
+	        for(int j =2; j<=2*i-2; j++)
+	        {
+	            if(j<=i)
+	            {
+	            	System.out.print(inc++);
+	                
+	            }
+	            else
+	            {
+	               System.out.print(dec--);
+	            }
+	        }
+	        
+	        //* at last position
+	        if(i != 1)
+	        {
+	          System.out.print("*");
+	        }
+	        
+	     System.out.println();
+	    }
+	    
+	    //second part
+	    for(int i =n; i>= 1; i--)
+	    {
+	        System.out.print("*"); // * at first position
+	       
+	        
+	        //all number series in increasing and decreasing order.
+	        int  inc=1, dec= i-2;
+	        for(int j = 2; j<= 2*i-2; j++)
+	        {
+	            if(j <=i)
+	            {
+	               System.out.print(inc++);
+	            }
+	            else
+	            {
+	               System.out.print(dec--);
+	            }
+	        }
+	         //* at last position
+	        if(i !=1)
+	        {
+	           System.out.print("*");
+	        }
+	       System.out.println();
+	    }
+        
     }
-   
-    // first part 
-    for(int i =1; i<=n+1; i++)
-    {
-        cout<< "*"; // * at first position
-        
-        //all number series in increasing and decreasing order.
-        int  inc = 1, dec= i-2;
-        for(int j =2; j<=2*i-2; j++)
-        {
-            if(j<=i)
-            {
-                cout<<inc++;
-            }
-            else
-            {
-                cout<< dec--;
-            }
-        }
-        
-        //* at last position
-        if(i != 1)
-        {
-            cout<< "*";
-        }
-        
-     cout<< endl;
-    }
-    
-    //second part
-    for(int i =n; i>= 1; i--)
-    {
-        cout<<"*"; // * at first position
-       
-        
-        //all number series in increasing and decreasing order.
-        int  inc=1, dec= i-2;
-        for(int j = 2; j<= 2*i-2; j++)
-        {
-            if(j <=i)
-            {
-                cout<< inc++;
-            }
-            else
-            {
-                cout<<dec--;
-            }
-        }
-         //* at last position
-        if(i !=1)
-        {
-            cout<< "*";
-        }
-        cout<<endl;
-    }
-	return 0;
 }
