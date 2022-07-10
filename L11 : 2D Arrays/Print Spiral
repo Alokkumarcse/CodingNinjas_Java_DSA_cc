@@ -59,41 +59,38 @@ public class Solution {
         
         if(matrix.length == 0)return ;
         
-        int startRow = 0;
-        int endRow = matrix.length -1;
-        int startCol = 0;
-        int endCol = matrix[0].length -1;
+        int sr = 0, er = matrix.length -1;
+        int sc = 0, ec = matrix[0].length -1;
         
-        while( startRow <= endRow  || startCol <= endCol){
-            
-            // print first row 
-            for(int i = startRow; i<= endCol; i++){
-                System.out.print(matrix[startRow][i]+" ");
+        int size = matrix.length * matrix[0].length;
+        int count = 0;
+        
+        while(  count  < size){
+            for(int i = sc; i<= ec && count <size ; i++){
+                count++;
+               System.out.print(matrix[sr][i]+" ");
             }
-            startRow++;
+            sr++;
             
-            // print last column
-            for(int i = startRow; i<=endRow; i++ ){
-               System.out.print(matrix[i][endCol]+" ");
+            for(int i = sr; i<= er && count < size; i++){
+                 count++;
+              System.out.print(matrix[i][ec]+" ");
             }
-            endCol--;
+            ec--;
             
-            // print last row
-            for(int i = endCol;  i>= startCol; i--){
-                System.out.print(matrix[endRow][i]+" ");
+            for(int i = ec; i>= sc && count < size; i-- ){
+                 count++;
+               System.out.print(matrix[er][i]+" ");
             }
-            endRow--;
+            er--;
             
-            // print first column
-            for(int i = endRow; i>= startRow; i--){
-                System.out.print(matrix[i][startCol]+" ");
+            for(int i = er; i>= sr && count < size ; i--){
+                 count++;
+               System.out.print(matrix[i][sc]+" ");
             }
-            startCol++;
-            
-            //earlier matrix is in [M * N] form
-            // now new matrix is form [M-1 * N -1] each time
+            sc++;
         }
-	}
+    }
 }
 
 // tc = O(n^2)
