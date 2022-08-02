@@ -37,3 +37,6 @@ public class solution {
 
 	}
 }
+
+// tc = O(log N)
+// sc = O(log N)
